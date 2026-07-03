@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lyzr.ai — Organic Position Tracking</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+:root{--bg:#faf8f5;--card:#fff;--warm:#2d2420;--warmMid:#5c4e44;--muted:#9e8e82;--border:rgba(80,60,40,0.09);--gold:#b8956a;--green:#3a8a5e;--red:#c25a48;--blue:#4a7fa8;--purple:#7e6aad;--rose:#c96a5a}
+body{margin:0;background:var(--bg);font-family:'DM Sans',-apple-system,system-ui,sans-serif;color:var(--warm);-webkit-font-smoothing:antialiased}
+a{text-decoration:none}
+.serif{font-family:'Playfair Display',Georgia,serif}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px 60px}
+.nav{position:sticky;top:0;z-index:20;background:rgba(250,248,245,0.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.navin{max-width:1080px;margin:0 auto;padding:10px 24px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.brand{font-family:'Playfair Display',serif;font-weight:700;font-size:16px;color:var(--warm);margin-right:8px}
+.brand span{color:var(--rose)}
+.nav a{font-size:12.5px;font-weight:600;color:var(--warmMid);padding:5px 10px;border-radius:7px}
+.nav a:hover{background:rgba(0,0,0,0.04)}
+.card{background:var(--card);border-radius:16px;border:1px solid var(--border);box-shadow:0 2px 16px rgba(40,30,20,0.05)}
+.hero{background:linear-gradient(135deg,#221a15,#2d2420);border-radius:20px;padding:34px 34px 30px;margin:22px 0 34px;color:#fff}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,239,230,0.55)}
+.htitle{font-family:'Playfair Display',serif;font-weight:700;font-size:38px;margin:6px 0 0;line-height:1.05}
+.hmeta{font-size:13.5px;color:rgba(245,239,230,0.6);margin-top:10px}
+.kgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:24px}
+.kpi{border-left:2px solid rgba(201,106,90,0.6);padding-left:14px}
+.kl{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(245,239,230,0.5)}
+.kv{font-family:'Playfair Display',serif;font-weight:700;font-size:30px;margin-top:3px}
+.kd{font-size:12.5px;font-weight:700;margin-top:2px}
+.hnote{font-size:11.5px;color:rgba(245,239,230,0.4);margin-top:16px}
+section{margin-bottom:40px;scroll-margin-top:60px}
+.shead{margin:0 0 16px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:10px}
+.sh-n{font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--gold)}
+.sh-t{font-family:'Playfair Display',serif;font-weight:700;font-size:24px;color:var(--warm);margin:0}
+.sh-line{height:2px;width:38px;background:var(--gold);border-radius:2px;margin:8px 0 0 28px}
+.sh-sub{font-size:13.5px;color:var(--muted);margin:8px 0 0 28px;max-width:640px}
+.kl2{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+/* distribution */
+.distbar{display:flex;height:26px;border-radius:8px;overflow:hidden;border:1px solid var(--border)}
+.seg{height:100%}
+.legs{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px}
+.leg{display:flex;align-items:center;gap:7px}
+.leg .sq{width:10px;height:10px;border-radius:3px}
+.leg .ll{font-size:12.5px;color:var(--warmMid)}
+.leg strong{font-size:12.5px;color:var(--warm)}
+.bgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.bcard{padding:15px 18px}
+.bnum{font-family:'Playfair Display',serif;font-weight:700;font-size:32px;color:var(--warm);line-height:1.1}
+.bd{font-size:12.5px;margin-top:4px}
+.up{color:var(--green);font-weight:700}.dn{color:var(--red);font-weight:700}.sep{color:var(--muted)}
+/* momentum */
+.mgrid{display:grid;grid-template-columns:1.1fr 1fr;gap:16px;align-items:stretch}
+.mgrid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.pad{padding:18px 20px}
+.bigrow{display:flex;align-items:flex-end;gap:18px;margin-bottom:14px}
+.big{font-family:'Playfair Display',serif;font-weight:700;font-size:40px;line-height:1}
+.biglbl{font-size:12.5px;color:var(--warmMid);margin-top:2px}
+.split{display:flex;height:12px;border-radius:999px;overflow:hidden}
+.totrow{display:flex;justify-content:space-between;margin-top:14px}
+.winrow{display:flex;align-items:center;gap:10px;padding:7px 0;border-top:1px solid var(--border)}
+.wtext{flex:1;min-width:0}
+.wkw{font-size:13.5px;font-weight:600;color:var(--warm)}
+.wnote{font-size:11.5px;color:var(--muted)}
+.jump{font-size:12.5px;font-weight:700;color:var(--green)}
+.mrow{margin-bottom:11px}
+.mtop{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px}
+.mkw{font-size:13px;font-weight:600;color:var(--warm)}
+.mval{font-size:12.5px;font-weight:700}
+.mval2{font-size:12.5px;color:var(--warmMid)}
+.track{height:6px;border-radius:999px;background:rgba(0,0,0,0.05)}
+.fill{height:100%;border-radius:999px}
+/* tables */
+.card.tbl{padding:6px 8px 10px;overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px}
+thead tr{text-align:left;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.05em}
+th{padding:10px 12px;background:var(--card)}
+td{padding:10px 12px}
+.c{text-align:center}.r{text-align:right}
+tbody tr{border-top:1px solid var(--border)}
+.indrow{cursor:pointer}
+.indrow:hover{background:rgba(0,0,0,0.02)}
+.indrow.active{background:rgba(201,106,90,0.07)}
+.indname{display:inline-flex;align-items:center;gap:9px;font-weight:700;color:var(--warm)}
+.dot{width:7px;height:7px;border-radius:999px;display:inline-block}
+.indbar .track{height:8px}
+.pill{font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.pill.solid{color:#fff}
+.soft-purple{color:var(--purple);background:rgba(126,106,173,0.12)}
+tr.dim{opacity:.72}
+.note{font-size:12px;color:var(--muted);margin:10px 0 0}
+.note strong{color:var(--warm)}
+/* filters */
+.fbar{padding:14px 18px;margin-bottom:14px}
+.frow{display:flex;gap:20px;flex-wrap:wrap;align-items:flex-end}
+.fgroup .kl2{margin-bottom:6px}
+.fbtns{display:flex;gap:5px}
+.fbtn{font-size:12.5px;font-weight:600;padding:6px 12px;border-radius:8px;cursor:pointer;border:1px solid var(--border);background:#fff;color:var(--warmMid)}
+.fbtn.on{border-color:var(--warm);background:var(--warm);color:#fff}
+.sel{font-size:13px;padding:7px 10px;border-radius:8px;border:1px solid var(--border);background:#fff;color:var(--warm)}
+.count{margin-left:auto;font-size:12.5px;color:var(--muted);align-self:center}
+.count strong{color:var(--warm)}
+.scroll{max-height:560px;overflow-y:auto;overflow-x:auto}
+thead.sticky th{position:sticky;top:0;z-index:1}
+/* serp */
+.aicard{padding:18px 20px;margin-bottom:16px;border-top:3px solid var(--blue)}
+.aibig{font-family:'Playfair Display',serif;font-weight:700;font-size:34px;color:var(--warm);line-height:1.1;margin-top:4px}
+.aibig span{font-size:18px;color:var(--muted)}
+.aitxt{font-size:13px;color:var(--warmMid);margin-top:4px}
+.aisub{font-size:12.5px;color:var(--muted);margin-top:8px}
+.srow{display:flex;justify-content:space-between;padding:6px 0;border-top:1px solid var(--border)}
+.sname{font-size:13px;color:var(--warmMid)}
+.sval{font-size:13px;font-weight:700;color:var(--warm)}
+.s247{color:var(--muted);font-weight:400}
+.foot{font-size:11.5px;color:var(--muted);text-align:center;margin-top:30px;padding-top:18px;border-top:1px solid var(--border)}
+@media(max-width:720px){.mgrid,.mgrid2,.serpgrid{grid-template-columns:1fr !important}}
+</style>
+</head>
+<body>
+<div class="nav"><div class="navin"><span class="brand">Lyzr<span>.</span></span>
+<a href="#overview">Overview</a><a href="#distribution">Rankings</a><a href="#momentum">Momentum</a><a href="#industries">Industries</a><a href="#keywords">Keywords</a><a href="#serp">SERP &amp; AI</a></div></div>
+
+<div class="wrap">
+
+<div class="hero" id="overview">
+<div class="eyebrow">Organic Position Tracking</div>
+<h1 class="htitle">What Lyzr ranks for</h1>
+<div class="hmeta">Semrush · lyzr.ai · Desktop, United States (Google) · Jun 26 – Jul 3, 2026</div>
+<div class="kgrid"><div class="kpi"><div class="kl">Visibility</div><div class="kv">4.99%</div><div class="kd" style="color:#6fbf92">+1.12%</div></div><div class="kpi"><div class="kl">Estimated Traffic</div><div class="kv">42.75</div><div class="kd" style="color:#6fbf92">+20.25</div></div><div class="kpi"><div class="kl">Avg. Position</div><div class="kv">85.4</div><div class="kd" style="color:#6fbf92">▲ 1.05 better</div></div><div class="kpi"><div class="kl">Keywords in Top 100</div><div class="kv">42</div><div class="kd" style="color:rgba(245,239,230,0.6)">of 247 tracked</div></div></div>
+<div class="hnote">Average position is high because most of the 247-keyword campaign is still targeted, not yet ranking. The story is in the movement below.</div>
+</div>
+
+<section id="distribution">
+<div class="shead"><div><div style="display:flex;align-items:baseline;gap:10px"><span class="sh-n">01</span><h2 class="sh-t">Rankings Distribution</h2></div><div class="sh-line"></div><p class="sh-sub">Where the 42 ranking keywords sit across Google's top 100 this week.</p></div></div>
+<div class="card" style="padding:20px 22px;margin-bottom:14px"><div class="distbar"><div class="seg" title="#1 – 3: 13" style="width:5.263%;background:#b8956a;min-width:3px"></div><div class="seg" title="#4 – 10: 6" style="width:2.429%;background:#3a8a5e;min-width:3px"></div><div class="seg" title="#11 – 20: 10" style="width:4.049%;background:#4a7fa8;min-width:3px"></div><div class="seg" title="#21 – 100: 13" style="width:5.263%;background:#7e6aad;min-width:3px"></div><div class="seg" title="Out of Top 100: 205" style="width:82.996%;background:#9e8e82;min-width:3px"></div></div><div class="legs"><div class="leg"><span class="sq" style="background:#b8956a"></span><span class="ll">#1 – 3</span><strong>13</strong></div><div class="leg"><span class="sq" style="background:#3a8a5e"></span><span class="ll">#4 – 10</span><strong>6</strong></div><div class="leg"><span class="sq" style="background:#4a7fa8"></span><span class="ll">#11 – 20</span><strong>10</strong></div><div class="leg"><span class="sq" style="background:#7e6aad"></span><span class="ll">#21 – 100</span><strong>13</strong></div><div class="leg"><span class="sq" style="background:#9e8e82"></span><span class="ll">Out of Top 100</span><strong>205</strong></div></div></div>
+<div class="bgrid"><div class="card bcard" style="border-top:3px solid #b8956a"><div class="kl">Top 3</div><div class="bnum">13</div><div class="bd"><span class="up">+5 new</span> <span class="sep">·</span> <span class="dn">−1 lost</span></div></div><div class="card bcard" style="border-top:3px solid #3a8a5e"><div class="kl">Top 10</div><div class="bnum">19</div><div class="bd"><span class="up">+6 new</span> <span class="sep">·</span> <span class="dn">−1 lost</span></div></div><div class="card bcard" style="border-top:3px solid #4a7fa8"><div class="kl">Top 20</div><div class="bnum">29</div><div class="bd"><span class="up">+7 new</span> <span class="sep">·</span> <span class="dn">−5 lost</span></div></div><div class="card bcard" style="border-top:3px solid #7e6aad"><div class="kl">Top 100</div><div class="bnum">42</div><div class="bd"><span class="up">+11 new</span> <span class="sep">·</span> <span class="dn">−9 lost</span></div></div></div>
+</section>
+
+<section id="momentum">
+<div class="shead"><div><div style="display:flex;align-items:baseline;gap:10px"><span class="sh-n">02</span><h2 class="sh-t">Momentum</h2></div><div class="sh-line"></div><p class="sh-sub">Improved vs. declined keywords and the biggest movers this week (visibility impact).</p></div></div>
+<div class="mgrid">
+<div class="card pad"><div class="kl2" style="margin-bottom:12px">Improved vs. Declined</div>
+<div class="bigrow"><div><div class="big" style="color:var(--green)">23</div><div class="biglbl">improved</div></div><div style="font-size:15px;color:var(--muted);padding-bottom:8px">vs.</div><div><div class="big" style="color:var(--red)">18</div><div class="biglbl">declined</div></div></div>
+<div class="split"><div style="width:56.1%;background:var(--green)"></div><div style="width:43.9%;background:var(--red)"></div></div>
+<div class="totrow"><span style="font-size:12.5px;color:var(--green);font-weight:700">Total positive +1.55%</span><span style="font-size:12.5px;color:var(--red);font-weight:700">Total negative −0.43%</span></div></div>
+<div class="card pad" style="border-top:3px solid var(--gold)"><div class="kl2" style="margin-bottom:10px">This week's wins</div><div class="winrow"><span class="pill solid" style="background:#b8956a">#1</span><div class="wtext"><div class="wkw">what is agentic ai</div><div class="wnote">22.2K-volume term — jumped to #1</div></div><span class=jump>↑ 99</span></div><div class="winrow"><span class="pill solid" style="background:#b8956a">#1</span><div class="wtext"><div class="wkw">crewai alternative</div><div class="wnote">climbed 7 spots to #1</div></div><span class=jump>↑ 7</span></div><div class="winrow"><span class="pill solid" style="background:#b8956a">#1</span><div class="wtext"><div class="wkw">ai hr agent</div><div class="wnote">holding #1</div></div></div><div class="winrow"><span class="pill solid" style="background:#b8956a">#1</span><div class="wtext"><div class="wkw">lyzr platform</div><div class="wnote">holding #1</div></div></div><div class="winrow"><span class="pill solid" style="background:#b8956a">#1</span><div class="wtext"><div class="wkw">lyzr agent studio</div><div class="wnote">holding #1</div></div></div></div>
+</div>
+<div class="mgrid2">
+<div class="card pad"><div class="kl2" style="margin-bottom:12px">Top gainers</div><div class="mrow"><div class="mtop"><span class="mkw">ai trading agents</span><span class="mval" style="color:#3a8a5e">↑ 0.40%</span></div><div class="track"><div class="fill" style="width:100.0%;background:#3a8a5e"></div></div></div><div class="mrow"><div class="mtop"><span class="mkw">agentic automation</span><span class="mval" style="color:#3a8a5e">↑ 0.40%</span></div><div class="track"><div class="fill" style="width:100.0%;background:#3a8a5e"></div></div></div><div class="mrow"><div class="mtop"><span class="mkw">crewai alternative</span><span class="mval" style="color:#3a8a5e">↑ 0.37%</span></div><div class="track"><div class="fill" style="width:92.5%;background:#3a8a5e"></div></div></div><div class="mrow"><div class="mtop"><span class="mkw">shadowlm</span><span class="mval" style="color:#3a8a5e">↑ 0.12%</span></div><div class="track"><div class="fill" style="width:30.0%;background:#3a8a5e"></div></div></div><div class="mrow"><div class="mtop"><span class="mkw">hr ai agents</span><span class="mval" style="color:#3a8a5e">↑ 0.11%</span></div><div class="track"><div class="fill" style="width:27.5%;background:#3a8a5e"></div></div></div></div>
+<div class="card pad"><div class="kl2" style="margin-bottom:12px">Top decliners</div><div class="mrow"><div class="mtop"><span class="mkw">multi ai agents architecture</span><span class="mval" style="color:#c25a48">↓ 0.27%</span></div><div class="track"><div class="fill" style="width:100.0%;background:#c25a48"></div></div></div><div class="mrow"><div class="mtop"><span class="mkw">agent orchestrator</span><span class="mval" style="color:#c25a48">↓ 0.02%</span></div><div class="track"><div class="fill" style="width:7.4%;background:#c25a48"></div></div></div><div class="mrow"><div class="mtop"><span class="mkw">ai social media agent</span><span class="mval" style="color:#c25a48">↓ 0.02%</span></div><div class="track"><div class="fill" style="width:7.4%;background:#c25a48"></div></div></div><div class="mrow"><div class="mtop"><span class="mkw">no code ai agent builder</span><span class="mval" style="color:#c25a48">↓ 0.02%</span></div><div class="track"><div class="fill" style="width:7.4%;background:#c25a48"></div></div></div><div class="mrow"><div class="mtop"><span class="mkw">ai agent platforms</span><span class="mval" style="color:#c25a48">↓ 0.01%</span></div><div class="track"><div class="fill" style="width:3.7%;background:#c25a48"></div></div></div></div>
+</div>
+</section>
+
+<section id="industries">
+<div class="shead">
+<div><div style="display:flex;align-items:baseline;gap:10px"><span class="sh-n">03</span><h2 class="sh-t">Industries</h2></div><div class="sh-line"></div><p class="sh-sub">Every tracked keyword grouped by industry. Volume is the search-demand opportunity in that vertical. Click a row to filter the keyword table below.</p></div>
+<div class="fbtns"><span style="font-size:11.5px;color:var(--muted);align-self:center;margin-right:2px">Sort by</span><button class="fbtn on" data-sort="vol">Volume</button><button class="fbtn" data-sort="kw">Keywords</button><button class="fbtn" data-sort="ranked">Ranked</button></div>
+</div>
+<div class="card tbl"><table><thead><tr><th>Industry</th><th class="c">Keywords</th><th class="c">Ranked</th><th class="c">Best</th><th class="r">Search Volume</th><th style="width:26%">Opportunity</th></tr></thead><tbody id="indBody"></tbody></table></div>
+<p class="note">17 industries · 246 tracked keywords · 32 ranked. Biggest demand sits in <strong>Education</strong> and <strong>Platform</strong>; the ranked wins are concentrated in <strong>Finance, HR, and Brand</strong>.</p>
+</section>
+
+<section id="keywords">
+<div class="shead"><div><div style="display:flex;align-items:baseline;gap:10px"><span class="sh-n">04</span><h2 class="sh-t">Keyword Tracker</h2></div><div class="sh-line"></div><p class="sh-sub">Every keyword in the priority campaign. Filter by industry, status, volume, and movement.</p></div></div>
+<div class="card fbar"><div class="frow">
+<div class="fgroup"><div class="kl2">Status</div><div class="fbtns"><button class="fbtn on" data-status data-v="all">All</button><button class="fbtn" data-status data-v="ranked">Ranked</button><button class="fbtn" data-status data-v="unranked">Targeted</button></div></div>
+<div class="fgroup"><div class="kl2">Volume</div><div class="fbtns"><button class="fbtn on" data-vol data-v="all">All</button><button class="fbtn" data-vol data-v="high">500+</button><button class="fbtn" data-vol data-v="low">Below 500</button></div></div>
+<div class="fgroup"><div class="kl2">Movement</div><div class="fbtns"><button class="fbtn on" data-move data-v="all">All</button><button class="fbtn" data-move data-v="up">Improved ↑</button><button class="fbtn" data-move data-v="down">Declined ↓</button></div></div>
+<div class="fgroup"><div class="kl2">Industry</div><select class="sel" id="indSelect"></select></div>
+<div class="count" id="kwCount"></div>
+</div></div>
+<div class="card tbl"><div class="scroll"><table><thead class="sticky"><tr><th>Keyword</th><th class="c">Position</th><th class="c">Change</th><th class="r">Volume</th><th class="r">KD%</th><th>Industry</th></tr></thead><tbody id="kwBody"></tbody></table></div></div>
+</section>
+
+<section id="serp">
+<div class="shead"><div><div style="display:flex;align-items:baseline;gap:10px"><span class="sh-n">05</span><h2 class="sh-t">SERP &amp; AI Visibility</h2></div><div class="sh-line"></div><p class="sh-sub">SERP features across the 247-keyword campaign, and where Lyzr is currently cited.</p></div></div>
+<div class="mgrid2 serpgrid">
+<div class="card pad"><div class="kl2" style="margin-bottom:12px">Features linking to Lyzr</div><div class="mrow"><div class="mtop"><span class="mkw">AI Overview</span><span class="mval2"><strong style="color:#4a7fa8">10</strong> of 235</span></div><div class="track"><div class="fill" style="width:4.3%;background:#4a7fa8"></div></div></div><div class="mrow"><div class="mtop"><span class="mkw">Site Links</span><span class="mval2"><strong style="color:#b8956a">4</strong> of 203</span></div><div class="track"><div class="fill" style="width:2.0%;background:#b8956a"></div></div></div><div class="mrow"><div class="mtop"><span class="mkw">Reviews</span><span class="mval2"><strong style="color:#3a8a5e">0</strong> of 96</span></div><div class="track"><div class="fill" style="width:1.5%;background:#3a8a5e"></div></div></div><div class="mrow"><div class="mtop"><span class="mkw">Video</span><span class="mval2"><strong style="color:#7e6aad">0</strong> of 144</span></div><div class="track"><div class="fill" style="width:1.5%;background:#7e6aad"></div></div></div><div class="mrow"><div class="mtop"><span class="mkw">Related searches</span><span class="mval2"><strong style="color:#9e8e82">0</strong> of 245</span></div><div class="track"><div class="fill" style="width:1.5%;background:#9e8e82"></div></div></div><div class="mrow"><div class="mtop"><span class="mkw">Featured snippet</span><span class="mval2"><strong style="color:#9e8e82">0</strong> of 6</span></div><div class="track"><div class="fill" style="width:1.5%;background:#9e8e82"></div></div></div></div>
+<div>
+<div class="card aicard"><div class="kl2">AI Overview reach</div><div class="aibig">235 <span>of 247</span></div><div class="aitxt">keywords now show an AI Overview. Lyzr is cited on <strong style="color:var(--blue)">10</strong>.</div><div class="aisub">The single largest visibility opportunity: earning citations where an AI Overview already appears above the organic results.</div></div>
+<div class="card pad"><div class="kl2" style="margin-bottom:10px">Other features on the SERP</div><div class="srow"><span class="sname">People also ask</span><span class="sval">144 <span class="s247">/ 247</span></span></div><div class="srow"><span class="sname">AdWords top</span><span class="sval">84 <span class="s247">/ 247</span></span></div><div class="srow"><span class="sname">AdWords bottom</span><span class="sval">82 <span class="s247">/ 247</span></span></div><div class="srow"><span class="sname">Image pack</span><span class="sval">8 <span class="s247">/ 247</span></span></div></div>
+</div>
+</div>
+</section>
+
+<div class="foot">Data: Semrush Position Tracking (organic) · Desktop, United States (Google) · Jun 26 – Jul 3, 2026. Keyword tracker reflects the priority campaign's ranked and targeted keywords.</div>
+</div>
+<script>
+var KEYWORDS = [["ai hr agent", 1, 0, 20, 33, "HR"],
+  ["lyzr platform", 1, 0, null, 36, "Brand"],
+  ["lyzr agent studio", 1, 0, 70, 18, "Brand"],
+  ["lyzr ai", 1, 0, 480, 45, "Brand"],
+  ["ai agent registry", null, null, 40, 11, "Platform"],
+  ["ai loan approval", 1, 0, 110, 12, "Finance"],
+  ["ai trading agents", 1, 6, 90, 23, "Finance"],
+  ["multi ai agents architecture", 2, -1, null, 54, "Platform"],
+  ["ai social media agent", 5, 0, 40, 30, "Marketing"],
+  ["agent orchestrator", 9, 2, 170, 53, "Platform"],
+  ["reasoning agents", 1, 9, 20, 42, "Platform"],
+  ["agentic reasoning", 10, 3, 170, 29, "Platform"],
+  ["agent orchestration", 10, 2, 320, 49, "Platform"],
+  ["crewai alternative", 1, 7, 10, 23, "Competitive"],
+  ["ai escalation routing", 13, 2, null, 13, "Support"],
+  ["ai agent builder", 14, 4, 1900, 45, "Platform"],
+  ["enterprise ai agents", 15, 14, 320, 31, "Enterprise"],
+  ["ai agents platform", 15, -1, 590, 42, "Platform"],
+  ["what is multi modal ai", 15, 3, 90, 67, "Education"],
+  ["ai loan processing", 16, 0, 20, 22, "Finance"],
+  ["ai agent builder platforms", 16, -1, 140, 47, "Platform"],
+  ["ai kyc automation", 20, -4, null, 55, "Finance"],
+  ["ai banking agent", 20, -11, null, null, "Finance"],
+  ["ai performance management", 20, 3, 90, 35, "HR"],
+  ["ai seo agent", 24, 1, 210, 28, "Marketing"],
+  ["ai wealth management", 25, 75, 480, 35, "Finance"],
+  ["best ai agents platform", 26, 2, null, 37, "Platform"],
+  ["multi-agent orchestration", 30, -12, 210, 39, "Platform"],
+  ["ai marketing agent", 49, 51, 480, 28, "Marketing"],
+  ["rag as a service", null, null, 390, null, "Platform"],
+  ["source to pay automation", null, null, 390, null, "Finance"],
+  ["ai content moderation", null, null, 390, null, "Marketing"],
+  ["ai customer service chatbot", null, null, 720, null, "Support"],
+  ["ai workflow builder", null, null, 590, null, "Platform"],
+  ["agentic ai tools", null, null, 880, null, "Platform"],
+  ["ai shopping assistant", null, null, 1300, null, "Retail"],
+  ["multi agent systems", null, null, 1300, null, "Platform"],
+  ["ai in retail", null, null, 2400, null, "Retail"],
+  ["ai governance framework", null, null, 2900, null, "Governance"],
+  ["self hosted ai", null, null, 390, null, "Enterprise"],
+  ["enterprise ai governance", null, null, 390, null, "Governance"],
+  ["enterprise ai strategy", null, null, 480, null, "Enterprise"],
+  ["ai for human resources", null, null, 720, null, "HR"],
+  ["how to build ai agents", null, null, 1000, null, "Education"],
+  ["ai chatbot platform", null, null, 1000, null, "Support"],
+  ["ai for recruitment", null, null, 260, null, "HR"],
+  ["ai for manufacturing", null, null, 1300, null, "Manufacturing"],
+  ["ai claims processing", null, null, 260, null, "Insurance"],
+  ["ai invoice processing", null, null, 720, null, "Finance"],
+  ["n8n alternative", null, null, 720, null, "Competitive"],
+  ["ai voice agent", null, null, 1300, null, "Support"],
+  ["ai in hr", null, null, 2400, null, "HR"],
+  ["build ai agents", null, null, 1300, null, "Education"],
+  ["ai support agent", null, null, 320, null, "Support"],
+  ["agentic ai platform", null, null, 390, null, "Platform"],
+  ["ai guardrails", null, null, 590, null, "Governance"],
+  ["ai for content marketing", null, null, 720, null, "Marketing"],
+  ["ai chatbot builder", null, null, 590, null, "Support"],
+  ["enterprise ai solutions", null, null, 1900, null, "Enterprise"],
+  ["ai for seo", null, null, 3600, null, "Marketing"],
+  ["ai phone agent", null, null, 320, null, "Support"],
+  ["enterprise ai tools", null, null, 480, null, "Enterprise"],
+  ["ai for customer experience", null, null, 480, null, "Support"],
+  ["best ai agents", null, null, 1300, null, "Platform"],
+  ["ai governance solutions", null, null, 1300, null, "Governance"],
+  ["ai for procurement", null, null, 590, null, "Finance"],
+  ["ai in insurance", null, null, 1600, null, "Insurance"],
+  ["ai sales agent", null, null, 1900, null, "Marketing"],
+  ["ai model governance", null, null, 260, null, "Governance"],
+  ["agentic systems", null, null, 590, null, "Platform"],
+  ["ai in financial services", null, null, 1300, null, "Finance"],
+  ["conversational ai platform", null, null, 3600, null, "Support"],
+  ["ai data security", null, null, 1000, null, "Security"],
+  ["ai coding agent", null, null, 590, null, "Developer"],
+  ["build an ai agent", null, null, 590, null, "Education"],
+  ["private ai platform", null, null, 720, null, "Enterprise"],
+  ["llm security", null, null, 1000, null, "Security"],
+  ["generative ai agents", null, null, 320, null, "Platform"],
+  ["ai agent use cases", null, null, 590, null, "Education"],
+  ["ai security platform", null, null, 320, null, "Security"],
+  ["generative ai for enterprise", null, null, 390, null, "Enterprise"],
+  ["ai automation platform", null, null, 480, null, "Platform"],
+  ["custom ai development", null, null, 720, null, "Developer"],
+  ["ai customer service software", null, null, 1000, null, "Support"],
+  ["ai contract review", null, null, 1300, null, "Legal"],
+  ["self hosted llm", null, null, 320, null, "Enterprise"],
+  ["ai underwriting", null, null, 390, null, "Insurance"],
+  ["multi agent system", null, null, 720, null, "Platform"],
+  ["agentic ai companies", null, null, 1300, null, "Platform"],
+  ["applied ai", null, null, 1900, null, "Education"],
+  ["custom ai assistant", null, null, 260, null, "Platform"],
+  ["no code ai agent builder", null, null, 320, null, "Platform"],
+  ["agentic orchestration", null, null, 480, null, "Platform"],
+  ["ai virtual assistant", null, null, 3600, null, "Support"],
+  ["generative ai in retail", null, null, 390, null, "Retail"],
+  ["multi agent reinforcement learning", null, null, 390, null, "Education"],
+  ["ai agent platforms", null, null, 480, null, "Platform"],
+  ["agentic process automation", null, null, 880, null, "Platform"],
+  ["ai agent studio", null, null, 390, null, "Brand"],
+  ["agent builder", 5, null, 1900, null, "Platform"],
+  ["private ai", null, null, 1600, null, "Enterprise"],
+  ["ai for demand forecasting", null, null, 320, null, "Retail"],
+  ["llm guardrails", null, null, 320, null, "Governance"],
+  ["ai agents for customer service", null, null, 390, null, "Support"],
+  ["ai agents for business", null, null, 720, null, "Enterprise"],
+  ["ai governance tools", null, null, 2400, null, "Governance"],
+  ["ai agent orchestration", null, null, 480, null, "Platform"],
+  ["conversational ai", null, null, 22200, null, "Support"],
+  ["responsible ai governance", null, null, 590, null, "Governance"],
+  ["ai business process automation", null, null, 880, null, "Platform"],
+  ["conversational ai for customer service", null, null, 1300, null, "Support"],
+  ["agentic ai examples", null, null, 1600, null, "Education"],
+  ["ai for marketing automation", null, null, 390, null, "Marketing"],
+  ["ai agent security", null, null, 390, null, "Security"],
+  ["enterprise ai software", null, null, 590, null, "Enterprise"],
+  ["ai for supply chain", null, null, 720, null, "Manufacturing"],
+  ["generative ai in banking", null, null, 880, null, "Finance"],
+  ["agentic ai meaning", null, null, 2900, null, "Education"],
+  ["ai for wealth management", null, null, 260, null, "Finance"],
+  ["procurement ai", null, null, 390, null, "Finance"],
+  ["agent studio", null, null, 390, null, "Brand"],
+  ["ai knowledge base", null, null, 1600, null, "Support"],
+  ["ai for healthcare", null, null, 1900, null, "Healthcare"],
+  ["ai product recommendations", null, null, 390, null, "Retail"],
+  ["enterprise generative ai", null, null, 480, null, "Enterprise"],
+  ["ai agents explained", null, null, 1000, null, "Education"],
+  ["ai agent platform", null, null, 1900, null, "Platform"],
+  ["intelligent process automation", null, null, 1600, null, "Platform"],
+  ["ai governance", null, null, 5400, null, "Governance"],
+  ["agentic automation", null, null, 1000, null, "Platform"],
+  ["ai governance platform", null, null, 1300, null, "Governance"],
+  ["best ai agent builder", null, null, 390, null, "Platform"],
+  ["types of ai agents", null, null, 1600, null, "Education"],
+  ["ai in banking", null, null, 2400, null, "Finance"],
+  ["ai security", null, null, 5400, null, "Security"],
+  ["ai agents", null, null, 33100, null, "Platform"],
+  ["ai for retail", null, null, 1000, null, "Retail"],
+  ["generative ai for marketing", null, null, 1000, null, "Marketing"],
+  ["ai customer service agent", null, null, 1000, null, "Support"],
+  ["ai governance software", null, null, 1000, null, "Governance"],
+  ["ai agents examples", null, null, 2400, null, "Education"],
+  ["agentic ai vs generative ai", null, null, 3600, null, "Education"],
+  ["agentic ai explained", null, null, 260, null, "Education"],
+  ["ai for accounts payable", null, null, 320, null, "Finance"],
+  ["ai resume screening", null, null, 390, null, "HR"],
+  ["agentic ai applications", null, null, 480, null, "Education"],
+  ["ai orchestration", null, null, 720, null, "Platform"],
+  ["private llm", null, null, 720, null, "Enterprise"],
+  ["agentic ai frameworks", null, null, 1000, null, "Platform"],
+  ["enterprise ai adoption", null, null, 480, null, "Enterprise"],
+  ["ai agent vs chatbot", null, null, 720, null, "Education"],
+  ["agentic ai architecture", null, null, 880, null, "Platform"],
+  ["agentic ai use cases", null, null, 1300, null, "Education"],
+  ["generative ai in hr", null, null, 320, null, "HR"],
+  ["prompt engineering", null, null, 22200, 86, "Education"],
+  ["what are ai agents", null, null, 5400, 92, "Education"],
+  ["hr ai agents", 3, null, 170, 30, "HR"],
+  ["legal use cases", null, null, null, 33, "Legal"],
+  ["agentic ai", null, null, 90500, 84, "Education"],
+  ["enterprise sales", null, null, 9900, 45, "Enterprise"],
+  ["ai agents for marketing", null, null, 390, 34, "Marketing"],
+  ["agent skills", null, null, 3600, 50, "Platform"],
+  ["workflow automation", null, null, 60500, 60, "Platform"],
+  ["sovereign ai", null, null, 2400, 51, "Enterprise"],
+  ["ai agent orchestration tools", null, null, 110, 40, "Platform"],
+  ["best ai agent platforms for marketing", null, null, null, 33, "Marketing"],
+  ["top hr agents", null, null, null, 31, "HR"],
+  ["hr help desk", null, null, 260, 20, "HR"],
+  ["hr automation", null, null, 1900, 42, "HR"],
+  ["responsible ai", null, null, 4400, 81, "Governance"],
+  ["ai agents for hr", 3, null, 390, 35, "HR"],
+  ["agent versioning", null, null, 10, 29, "Platform"],
+  ["what is agentic ai", 1, null, 22200, 80, "Education"],
+  ["multimodal ai", null, null, 2900, 74, "Education"],
+  ["enterprise ai", null, null, 4400, 75, "Enterprise"],
+  ["marketing ai agents", null, null, 260, 42, "Marketing"],
+  ["autonomous ai agents", null, null, 1300, 65, "Platform"],
+  ["agentic ai workflows", null, null, 480, 50, "Platform"],
+  ["ai agent framework", null, null, 590, 73, "Platform"],
+  ["llm agents", null, null, 1300, 50, "Platform"],
+  ["ai workflow automation", null, null, 2900, 67, "Platform"],
+  ["tool-using ai agents", null, null, null, 55, "Platform"],
+  ["agent-based ai software", null, null, null, 65, "Platform"],
+  ["enterprise ai platform", null, null, 1000, 57, "Enterprise"],
+  ["low-code ai agents", null, null, null, 40, "Platform"],
+  ["no-code ai automation", null, null, 40, 33, "Platform"],
+  ["ai copilot platform", null, null, null, 45, "Platform"],
+  ["ai sdk enterprise", null, null, null, null, "Developer"],
+  ["private ai agents", null, null, 10, 47, "Enterprise"],
+  ["on-premise ai agents", null, null, 20, 25, "Enterprise"],
+  ["ai agents api", null, null, 40, 22, "Developer"],
+  ["responsible ai platform", null, null, 140, 33, "Governance"],
+  ["ai recruitment automation", null, null, 10, 34, "HR"],
+  ["hr chatbot ai", null, null, null, 29, "HR"],
+  ["ai talent acquisition", null, null, 480, 27, "HR"],
+  ["employee onboarding ai", null, null, 70, 12, "HR"],
+  ["ai payroll automation", null, null, 30, 20, "HR"],
+  ["hr workflow automation", null, null, 480, 28, "HR"],
+  ["ai people analytics", null, null, 90, 20, "HR"],
+  ["ai leave management", null, null, null, 9, "HR"],
+  ["ai workforce planning", null, null, 170, 34, "HR"],
+  ["ai content generation", null, null, 1000, 68, "Marketing"],
+  ["marketing automation ai", null, null, 480, 61, "Marketing"],
+  ["ai campaign optimization", null, null, 50, 14, "Marketing"],
+  ["ai copywriting tool", null, null, 210, 56, "Marketing"],
+  ["ai lead generation", null, null, 2900, 68, "Marketing"],
+  ["ai email marketing", null, null, 1600, 55, "Marketing"],
+  ["ai brand monitoring", null, null, 880, 50, "Marketing"],
+  ["ai demand forecasting", null, null, 590, 53, "Retail"],
+  ["ai healthcare agent", null, null, null, 24, "Healthcare"],
+  ["clinical ai automation", null, null, null, 35, "Healthcare"],
+  ["ai patient engagement", null, null, 320, 21, "Healthcare"],
+  ["healthcare workflow ai", null, null, null, 35, "Healthcare"],
+  ["ai medical coding", null, null, 720, 38, "Healthcare"],
+  ["ai prior authorization", null, null, 210, 26, "Healthcare"],
+  ["ai care coordination", null, null, 70, 18, "Healthcare"],
+  ["ai clinical documentation", null, null, 880, 74, "Healthcare"],
+  ["ai diagnostic assistant", null, null, 20, 15, "Healthcare"],
+  ["ai pharmacy automation", null, null, null, 38, "Healthcare"],
+  ["hipaa compliant ai agent", null, null, 20, 22, "Healthcare"],
+  ["ai customer support agent", null, null, 390, 37, "Support"],
+  ["conversational ai support", null, null, 10, 64, "Support"],
+  ["ai helpdesk automation", null, null, 70, 49, "Support"],
+  ["ai ticketing system", null, null, 590, 53, "Support"],
+  ["ai chatbot for support", null, null, 50, 68, "Support"],
+  ["customer service ai", null, null, 2400, 75, "Support"],
+  ["ai contact center", null, null, 1300, 63, "Support"],
+  ["ai csat improvement", null, null, 10, 7, "Support"],
+  ["voice ai agent support", null, null, null, 37, "Support"],
+  ["ai self-service portal", null, null, null, 31, "Support"],
+  ["ai fraud detection", null, null, 880, 63, "Finance"],
+  ["ai aml compliance", null, null, 70, 29, "Finance"],
+  ["insurance claims ai", null, null, 140, 50, "Insurance"],
+  ["ai underwriting automation", null, null, null, 49, "Insurance"],
+  ["ai financial advisor bot", null, null, null, 51, "Finance"],
+  ["ai policy servicing", null, null, null, 18, "Insurance"],
+  ["ai risk assessment", null, null, 1300, 67, "Finance"],
+  ["regulatory ai compliance", null, null, null, 59, "Governance"],
+  ["autogen alternative", null, null, 10, null, "Competitive"],
+  ["langchain alternative", null, null, 140, 24, "Competitive"],
+  ["ai agent companies 2025", null, null, null, 46, "Platform"],
+  ["ai agents vs rpa", null, null, 70, 33, "Education"],
+  ["enterprise agentic ai", null, null, 110, 55, "Enterprise"],
+  ["ai process automation", null, null, 720, 61, "Platform"],
+  ["ai digital employees", null, null, null, 18, "Enterprise"],
+  ["ai agents roi", null, null, null, 40, "Enterprise"]];
+var C = {gold:'#b8956a',green:'#3a8a5e',red:'#c25a48',blue:'#4a7fa8',purple:'#7e6aad',muted:'#9e8e82',warm:'#2d2420',warmMid:'#5c4e44'};
+var IND_COLOR = {Platform:'#4a7fa8',Education:'#7e6aad',Support:'#3a8a5e',Enterprise:'#b8956a',Governance:'#c25a48',Marketing:'#c77d4a',Finance:'#3f6f96',HR:'#4a9a6e',Security:'#a04a6a',Retail:'#9a6aad',Healthcare:'#3f9a8a',Insurance:'#8a7a4a',Manufacturing:'#6a6a9a',Developer:'#5a8ab0',Brand:'#c96a5a',Legal:'#9a6a4a',Competitive:'#c25a48'};
+function iColor(i){return IND_COLOR[i]||C.muted;}
+var INDUSTRIES = ['All'].concat(Array.from(new Set(KEYWORDS.map(function(k){return k[5];}))).sort());
+var selInd='All', indSort='vol', rankFilter='all', volFilter='all', moveFilter='all';
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function toneOf(p){return p<=3?'gold':p<=10?'green':p<=20?'blue':'muted';}
+function posPill(p){return '<span class="pill solid" style="background:'+C[toneOf(p)]+'">#'+p+'</span>';}
+
+function computeIndustries(){
+  var m={};
+  KEYWORDS.forEach(function(r){var ind=r[5],pos=r[1],vol=r[3];
+    if(!m[ind])m[ind]={ind:ind,count:0,ranked:0,vol:0,best:null};
+    var o=m[ind];o.count++;o.vol+=vol||0;
+    if(pos!=null){o.ranked++;if(!o.best||pos<o.best.pos)o.best={kw:r[0],pos:pos};}});
+  var arr=Object.keys(m).map(function(k){return m[k];});
+  arr.sort(function(a,b){return indSort==='vol'?b.vol-a.vol:indSort==='kw'?b.count-a.count:b.ranked-a.ranked;});
+  return arr;
+}
+function renderIndustries(){
+  var arr=computeIndustries();
+  var maxVol=Math.max.apply(null,arr.map(function(s){return s.vol;}));
+  var html=arr.map(function(s){
+    var active=selInd===s.ind;
+    var best=s.best?posPill(s.best.pos):'<span style="color:'+C.muted+';font-size:11.5px">—</span>';
+    var ranked=s.ranked>0?'<span style="color:'+C.green+';font-weight:700">'+s.ranked+'</span>':'<span style="color:'+C.muted+'">0</span>';
+    var w=Math.max(3,s.vol/maxVol*100);
+    return '<tr data-ind="'+s.ind+'" class="indrow'+(active?' active':'')+'">'
+      +'<td><span class="indname"><span class="dot" style="background:'+iColor(s.ind)+'"></span>'+s.ind+'</span></td>'
+      +'<td class="c" style="color:'+C.warmMid+';font-weight:600">'+s.count+'</td>'
+      +'<td class="c">'+ranked+'</td>'
+      +'<td class="c">'+best+'</td>'
+      +'<td class="r" style="font-weight:700;color:'+C.warm+'">'+s.vol.toLocaleString()+'</td>'
+      +'<td class="indbar"><div class="track"><div class="fill" style="width:'+w+'%;background:'+iColor(s.ind)+'"></div></div></td></tr>';
+  }).join('');
+  document.getElementById('indBody').innerHTML=html;
+  var rows=document.getElementById('indBody').querySelectorAll('tr');
+  Array.prototype.forEach.call(rows,function(tr){tr.onclick=function(){var ind=tr.getAttribute('data-ind');selInd=(selInd===ind)?'All':ind;document.getElementById('indSelect').value=selInd;renderIndustries();renderTracker();};});
+}
+function filterKw(){
+  return KEYWORDS.filter(function(r){var pos=r[1],diff=r[2],vol=r[3],ind=r[5];
+    if(selInd!=='All'&&ind!==selInd)return false;
+    if(rankFilter==='ranked'&&pos==null)return false;
+    if(rankFilter==='unranked'&&pos!=null)return false;
+    if(volFilter==='high'&&!(vol&&vol>=500))return false;
+    if(volFilter==='low'&&(vol&&vol>=500))return false;
+    if(moveFilter==='up'&&!(diff&&diff>0))return false;
+    if(moveFilter==='down'&&!(diff&&diff<0))return false;
+    return true;
+  }).sort(function(a,b){var pa=a[1]==null?9999:a[1],pb=b[1]==null?9999:b[1];if(pa!==pb)return pa-pb;return (b[3]||0)-(a[3]||0);});
+}
+function renderTracker(){
+  var rows=filterKw();
+  var tb=document.getElementById('kwBody');
+  if(rows.length===0){tb.innerHTML='<tr><td colspan="6" style="padding:24px;text-align:center;color:'+C.muted+'">No keywords match these filters.</td></tr>';}
+  else{tb.innerHTML=rows.map(function(r){var kw=r[0],pos=r[1],diff=r[2],vol=r[3],kd=r[4],ind=r[5];
+    var posCell=pos==null?'<span style="font-size:11.5px;color:'+C.muted+'">Not ranked</span>':posPill(pos);
+    var chg=(diff==null||diff===0)?'<span style="color:'+C.muted+'">—</span>':'<span style="color:'+(diff>0?C.green:C.red)+';font-weight:700">'+(diff>0?'↑':'↓')+' '+Math.abs(diff)+'</span>';
+    var volCell=vol?vol.toLocaleString():'—';
+    return '<tr'+(pos==null?' class="dim"':'')+'>'
+      +'<td style="font-weight:600;color:'+C.warm+'">'+esc(kw)+'</td>'
+      +'<td class="c">'+posCell+'</td><td class="c">'+chg+'</td>'
+      +'<td class="r" style="color:'+((vol&&vol>=500)?C.warm:C.muted)+';font-weight:'+((vol&&vol>=500)?700:400)+'">'+volCell+'</td>'
+      +'<td class="r" style="color:'+C.muted+'">'+(kd==null?'—':kd)+'</td>'
+      +'<td><span class="pill soft-purple"><span class="dot" style="background:'+iColor(ind)+'"></span>'+ind+'</span></td></tr>';
+  }).join('');}
+  var ranked=rows.filter(function(r){return r[1]!=null;}).length;
+  document.getElementById('kwCount').innerHTML='Showing <strong>'+rows.length+'</strong> · <span style="color:'+C.green+'">'+ranked+' ranked</span>';
+}
+function setActive(sel,active){Array.prototype.forEach.call(document.querySelectorAll(sel),function(b){if(b===active)b.classList.add('on');else b.classList.remove('on');});}
+function init(){
+  document.getElementById('indSelect').innerHTML=INDUSTRIES.map(function(i){return '<option>'+i+'</option>';}).join('');
+  Array.prototype.forEach.call(document.querySelectorAll('[data-sort]'),function(b){b.onclick=function(){indSort=b.getAttribute('data-sort');setActive('[data-sort]',b);renderIndustries();};});
+  function group(sel,setter){Array.prototype.forEach.call(document.querySelectorAll(sel),function(b){b.onclick=function(){setter(b.getAttribute('data-v'));setActive(sel,b);renderTracker();};});}
+  group('[data-status]',function(v){rankFilter=v;});
+  group('[data-vol]',function(v){volFilter=v;});
+  group('[data-move]',function(v){moveFilter=v;});
+  document.getElementById('indSelect').onchange=function(e){selInd=e.target.value;renderIndustries();renderTracker();};
+  renderIndustries();renderTracker();
+}
+document.addEventListener('DOMContentLoaded',init);
+</script>
+</body>
+</html>
